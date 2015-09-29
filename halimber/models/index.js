@@ -14,14 +14,6 @@ sequelize = new Sequelize('finaluaq', 'root', '', {
 });
 */
 
-sequelize = new Sequelize('halimber', 'root', 'Yamil12345', {
-  host: 'rideqro.ck55xvcjczse.us-west-2.rds.amazonaws.com',
-  dialect:  'mysql',
-  protocol: 'mysql',
-  logging: false,
-  port:    3306 // or 5432 (for postgres),
-});
- 
 // Cargar todos los modelos
 fs
   .readdirSync(__dirname)
