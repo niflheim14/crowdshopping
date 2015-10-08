@@ -1,0 +1,28 @@
+var passport                = require('passport');
+//var YoutubeV3Strategy = require('passport-youtube-v3').Strategy;
+var LinkedInStrategy = require('passport-linkedin')
+var YOUTUBE_APP_ID = "78o57t1q9klrb5";
+var YOUTUBE_APP_SECRET = "ClTqv24AmtiHWpK2";
+
+passport.use(new LinkedInStrategy({
+    clientID: YOUTUBE_APP_ID,
+    clientSecret: YOUTUBE_APP_SECRET,
+    callbackURL: "/auth/linkedin/callback"
+//    scope: ['https://www.googleapis.com/auth/youtube']
+  },
+  function(accessToken, refreshToken, profile, done) {
+        if(profile){
+                proccessUserData(accessToken,profile);
+      }
+        return done(null, false);   
+  }
+));
+
+passport.serializeUser(function(user, done) {
+    done(null, user);
+});
+
+passport.deserializeUser(function(id, done) {
+    done(null, user);
+});
+
