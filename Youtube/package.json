@@ -1,0 +1,15 @@
+{
+  "name": "Youtube",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+	"express": ">=0.0.0",
+	"body-parser": ">=0.0.0",
+	"passport": ">=0.0.0",
+	"youtube-node": ">=0.0.0",
+	"passport-youtube": ">=0.0.0"
+  }
+}

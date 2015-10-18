@@ -1,29 +1,16 @@
 {
-  "name": "node-js-sample",
-  "version": "0.2.0",
-  "description": "A sample Node.js app using Express 4",
-  "main": "index.js",
+  "name": "LinkedIn",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "start": "node index.js"
+    "start": "node ./bin/www"
   },
   "dependencies": {
-    "express": "^4.0.0"
-  },
-  "engines": {
-    "node": "0.12.x"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/heroku/node-js-sample"
-  },
-  "keywords": [
-    "node",
-    "heroku",
-    "express"
-  ],
-  "author": "Mark Pundsack",
-  "contributors": [
-    "Zeke Sikelianos <zeke@sikelianos.com> (http://zeke.sikelianos.com)"
-  ],
-  "license": "MIT"
+	"express": ">=0.0.0",
+	"body-parser": ">=0.0.0",
+	"passport": ">=0.0.0",
+	"node-linkedin": ">=0.0.0",
+	"passport-linkedin": ">=0.0.0",
+	"cookie-session": ">=0.0.0"
+  }
 }
