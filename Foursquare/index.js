@@ -1,61 +1,54 @@
-// Require Modules
-var express = require('express');
-var bodyParser = require('body-parser');
-var passport = require('passport');
-var oauth2 = require('./lib/oauth2');
-var cookieSession = require('cookie-session');
-
-var app = express();
+var express = require('express'),
+bodyParser = require('body-parser'),
+passport = require('passport'),
+//Uso de node-foursquare para obtener user, venues.
+Foursquare = require('./lib/lib_foursquare/foursquare');
 
 require('./lib/auth');
-Auth = require('./lib/authorization');
 
+var app = express();
 app.set('view engine','ejs');
 app.use( bodyParser.json() );
 app.use(bodyParser.urlencoded({ extended: false }));
-
-app.use(cookieSession({
-    keys: ['secret1']
-}));
-
 app.use(passport.initialize());
 app.use(passport.session());
+
 app.set('port', (process.env.PORT || 3000))
 app.use(express.static(__dirname + '/public'))
 app.set('views', __dirname+'/views');
 
-app.get('/', Auth.isAuthenticated, function(req, res, next) {
-	res.render('home');
-});
+app.get('/', function(req, res, next) {
+	res.redirect('/login');
+});			
 
 app.get('/login', function(req, res, next) {
 	res.render('index');
 });
 
-app.get('/home', Auth.isAuthenticated, function(req, res, next) {
-	res.render('home');
-});
-
-app.get('/logout',function(req,res,next){
-	req.logout();
-	res.redirect('/');
-});
-
 app.get('/auth/foursquare',
-  passport.authenticate('foursquare'));
+	passport.authenticate('foursquare'));
 
 app.get('/auth/foursquare/callback', 
-  passport.authenticate('foursquare', { failureRedirect: '/login' }),
-  function(req, res) {
-    // Successful authentication, redirect home.
-    res.redirect('/');
-  });
+	passport.authenticate('foursquare', { failureRedirect: '/login' }),
+	function(req, res) {
+    	// Successful authentication, redirect home.
+    	res.redirect('/');
+});
 
-proccessUserData = function(accessToken,profile){
-	console.log('accessToken: '+ accessToken);
-	console.log(profile._json);	
+proccessFoursquareUserData = function(accessToken,profile){
+	Foursquare.getUser(accessToken, function(fullProfile){
+		console.log(fullProfile);
+	})
+	Foursquare.getVenueHistory(accessToken, function(venues){
+		console.log(venues);
+	})
+	Foursquare.explore(accessToken, function(explore){
+		console.log(explore);
+	})
+	
 }
 
 app.listen(app.get('port'), function() {
 	console.log("Node app is running at localhost:" + app.get('port'))
-})
+});
+

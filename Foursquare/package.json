@@ -1,0 +1,12 @@
+{
+  "name": "Foursquare",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+	"express": ">=0.0.0",
+	"body-parser": ">=0.0.0",
+	"passport": ">=0.0.0",
+	"node-foursquare": ">=0.0.0",
+	"passport-foursquare": ">=0.0.0"
+  }
+}

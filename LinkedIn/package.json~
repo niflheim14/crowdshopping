@@ -1,0 +1,15 @@
+{
+  "name": "LinkedIn",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+	"express": ">=0.0.0",
+	"body-parser": ">=0.0.0",
+	"passport": ">=0.0.0",
+	"node-linkedin": ">=0.0.0",
+	"passport-linkedin": ">=0.0.0"
+  }
+}
